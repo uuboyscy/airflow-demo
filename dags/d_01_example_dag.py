@@ -26,7 +26,7 @@ dag = DAG(
     'd_01_example_dag',
     default_args=default_args,
     description='An example DAG with Python operators',
-    schedule="* * * * *",
+    schedule="*/10 * * * *",
     start_date=datetime(2023, 1, 1),
     catchup=False
 )

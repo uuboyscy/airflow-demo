@@ -20,7 +20,7 @@ default_args = {
     dag_id="d_11_example_import_taskgroup",
     default_args=default_args,
     description="An example DAG with Python operators",
-    schedule_interval="* * * * *",
+    schedule_interval="*/5 * * * *",
     start_date=datetime(2023, 1, 1),
     catchup=False,
 )

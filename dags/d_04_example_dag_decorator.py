@@ -4,7 +4,7 @@ from airflow.decorators import dag, task, bash_task
 
 # Define the DAG
 @dag(
-    schedule="* * * * *",
+    schedule="* 1-2,7-8 * * *",
     start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
     catchup=False,
     tags=["example"],

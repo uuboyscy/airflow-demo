@@ -30,7 +30,7 @@ dag = DAG(
     "d_03_example_pass_parameters",
     default_args=default_args,
     description="An example DAG with Python operators",
-    schedule_interval="* * * * *",
+    schedule_interval="10 * * * *",
     start_date=datetime(2023, 1, 1),
     catchup=False
 )
