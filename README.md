@@ -11,31 +11,19 @@
 
     ```bash
     docker run -it -d \
-    	--name airflow-server \
-    	-p 8080:8080 \
-    	-v $PWD/dags:/opt/airflow/dags \
-    	-v $PWD/logs:/opt/airflow/logs \
-    	-v $PWD/utils:/opt/airflow/utils \
-    	-v $PWD/tasks:/opt/airflow/tasks \
-    	-e PYTHONPATH=/opt/airflow \
-    	apache/airflow:latest airflow standalone
+        --name airflow3-server \
+        -p 8080:8080 \
+        -v $PWD/dags:/opt/airflow/dags \
+        -v $PWD/logs:/opt/airflow/logs \
+        -v $PWD/utils:/opt/airflow/utils \
+        -v $PWD/tasks:/opt/airflow/tasks \
+        -e PYTHONPATH=/opt/airflow \
+        apache/airflow:3.0.3-python3.11 airflow standalone
     ```
 
-- Create user
-
-    ```bash
-    docker exec -it airflow-server /bin/bash
-
-    # Execute following command in container
-    airflow users create \
-        --username airflow \
-        --firstname airflow \
-        --password airflow \
-        --lastname airflow \
-        --role Admin \
-        --email your_email@example.com
-
-    mkdir -p /opt/airflow/utils
-    touch /opt/airflow/utils/__init__.py
-    touch /opt/airflow/tasks/__init__.py
-    ```
+- Get user
+    1. Execute into container
+        ```bash
+        docker exec -it airflow3-server /bin/bash
+        ```
+    2. Find user in `/opt/airflow/simple_auth_manager_passwords.json.generated` in container
