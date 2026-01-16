@@ -27,3 +27,12 @@
         docker exec -it airflow3-server /bin/bash
         ```
     2. Find user in `/opt/airflow/simple_auth_manager_passwords.json.generated` in container
+    3. Or simply execute
+        ```bash
+        docker exec airflow3-server cat /opt/airflow/simple_auth_manager_passwords.json.generated
+        ```
+        Then you will get something like
+        ```json
+        {"admin": "DNFDHnKuRYbRNZDX"}
+        ```
+    
