@@ -1,7 +1,7 @@
 import random
 from datetime import datetime, timedelta
 
-from airflow.decorators import dag, task
+from airflow.sdk import dag, task
 
 from tasks.test_tasks import do_something
 
@@ -20,7 +20,7 @@ default_args = {
     dag_id="d_10_example_import_tasks",
     default_args=default_args,
     description="An example DAG with Python operators",
-    schedule_interval="*/20 * * * *",
+    schedule="*/20 * * * *",
     start_date=datetime(2023, 1, 1),
     catchup=False,
 )

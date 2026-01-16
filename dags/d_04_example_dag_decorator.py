@@ -1,5 +1,5 @@
 import pendulum
-from airflow.decorators import dag, task, bash_task
+from airflow.sdk import dag, task
 
 
 # Define the DAG
@@ -17,7 +17,7 @@ def d_04_example_dag_decorator():
     def task2():
         print("Running Task 2")
 
-    @bash_task
+    @task.bash
     def task3():
         return "echo 'Hello from Task 3!'"
 

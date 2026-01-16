@@ -1,7 +1,7 @@
 import random
 from datetime import datetime, timedelta
 
-from airflow.decorators import dag, task
+from airflow.sdk import dag, task
 
 from utils.my_notifier import MyNotifier
 
@@ -20,7 +20,7 @@ default_args = {
     dag_id="d_09_example_notification",
     default_args=default_args,
     description="An example DAG with Python operators",
-    schedule_interval="0,10,50 * * * *",
+    schedule="0,10,50 * * * *",
     start_date=datetime(2023, 1, 1),
     on_success_callback=MyNotifier(message="Success!"),
     on_failure_callback=MyNotifier(message="Failure!"),
