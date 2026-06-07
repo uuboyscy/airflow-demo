@@ -20,9 +20,11 @@ DEFAULT_END_DATE = "2023-12-31"
 )
 def d_06_example_pass_parameters_cli():
     @task
-    def extract_parameters(ti):
-        config = ti.xcom_pull(task_ids='trigger', key='return_value') or {}
-        # Get parameters with defaults if not provided via CLI
+    def extract_parameters(dag_run=None):
+        # Access conf directly from the dag_run object
+        config = dag_run.conf if dag_run and dag_run.conf else {}
+        
+        # Get parameters with defaults if not provided via CLI/UI
         start_date = config.get('start_date', DEFAULT_START_DATE)
         end_date = config.get('end_date', DEFAULT_END_DATE)
         return {"start_date": start_date, "end_date": end_date}
